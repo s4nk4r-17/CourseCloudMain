@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<div>
+
+    
+    <h1>CourseDetail</h1>
+    <p>Title:{{course.title}}</p>
+    <p>Description:{{course.description}}</p>
+    <p>Price:{{course.price}}</p>
+    <p>Instructor:{{course.owner}} </p>
+    
+
+         
+    <div>
+    
+        <!-- getting all modules of course -->
+        <h1>All Modules</h1>
+
+        {%for module in course.modules.all%}
+    
+            <h2>{{module.order}}Module Title:   {{module.title}} ({{module.lessons.all.count}})</h2>
+    
+            {%for lesson in module.lessons.all%}
+    
+                <h3> --{{forloop.counter}}:{{lesson.title}}</h3>
+                
+            {%endfor%}
+    
+        {%endfor%}
+
+    </div>
+
+
+</div>
+
+{%endblock%}
